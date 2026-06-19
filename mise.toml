@@ -4,7 +4,7 @@ gradle = "latest"
 java = "latest"
 
 [env]
-TMPDIR="${PWD}/.mise/tmp"
+_.path = {tools = true, path = ["${ANDROID_HOME}/platform-tools"]}
 
 [settings]
 env_shell_expand = true
@@ -13,11 +13,12 @@ env_shell_expand = true
 [tasks.install-android-sdk]
 sources = ["android-sdk-packages.txt"]
 run = """
+  export TMPDIR="${PWD}/.mise/tmp"
   mkdir -p ${TMPDIR} ${ANDROID_HOME}
   yes | sdkmanager --licenses
   sdkmanager --package_file=android-sdk-packages.txt
   yes | sdkmanager --licenses
-  rm -rf ${TMPDIR} || true
+  rm -rf ${TMPDIR}
 """
 
 [tasks.build]
