@@ -1,0 +1,26 @@
+[tools]
+android-sdk = "latest"
+gradle = "latest"
+java = "latest"
+
+[env]
+TMPDIR="${PWD}/.mise/tmp"
+
+[settings]
+env_shell_expand = true
+
+
+[tasks.install-android-sdk]
+sources = ["android-sdk-packages.txt"]
+run = """
+  mkdir -p ${TMPDIR} ${ANDROID_HOME}
+  yes | sdkmanager --licenses
+  sdkmanager --package_file=android-sdk-packages.txt
+  yes | sdkmanager --licenses
+  rm -rf ${TMPDIR} || true
+"""
+
+[tasks.build]
+depends = ["install-android-sdk"]
+run = "gradle assembleDebug"
+alias = "b"
