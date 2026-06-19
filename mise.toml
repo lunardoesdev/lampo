@@ -23,5 +23,12 @@ run = """
 
 [tasks.build]
 depends = ["install-android-sdk"]
+sources = [
+'build.gradle.kts',
+'gradle.properties',
+'src/**',
+'settings.gradle.kts',
+'android-sdk-packages.txt'
+]
 run = "gradle assembleDebug"
 alias = "b"
