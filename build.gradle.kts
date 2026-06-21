@@ -5,6 +5,7 @@ plugins {
 android {
     namespace = "my.supa.lamp"
     compileSdk = 34
+    buildToolsVersion = "36.0.0"
 
     defaultConfig {
         applicationId = "my.supa.lamp"
@@ -13,4 +14,12 @@ android {
         versionCode = 1
         versionName = "1.0"
     }
+
+    buildTypes {
+        release {
+            isMinifyEnabled = false
+        }
+    }
+
 }
+

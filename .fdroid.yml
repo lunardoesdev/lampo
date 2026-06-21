@@ -1,0 +1,16 @@
+Categories:
+  - Flashlight
+License: MIT
+AuthorName: Lunatic
+SourceCode: https://github.com/lunardoesdev/lampo
+IssueTracker: https://github.com/lunardoesdev/lampo/issues
+
+RepoType: git
+Repo: https://github.com/lunardoesdev/lampo.git
+
+Builds:
+  - versionName: "1.0"
+    versionCode: 1
+    commit: b2b9ddd39c0c093e3f8f5b697c8c807bd3af98ef
+    gradle:
+      - yes
