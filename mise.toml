@@ -1,5 +1,7 @@
 [tools]
 android-sdk = "latest"
+"github:Genymobile/scrcpy" = "latest"
+"github:cesarferreira/byedroid" = "0.9.0"
 gradle = "latest"
 java = "latest"
 
