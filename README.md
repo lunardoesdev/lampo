@@ -11,6 +11,11 @@ particular neede components, and build the app.
 Your apk is in ./build/outputs/apk/debug.
 
 
+## screenshots
+
+![./screenshot1.png](./screenshot1.png)
+![./screenshot2.png](./screenshot2.png)
+
 # the following is just devlog, reading is optional.
 
 
