@@ -1,0 +1,7 @@
+Lampo is a minimal and open-source flashlight app for Android. It uses the camera flash LED to turn your device into a bright flashlight.
+
+Features:
+- Simple one-tap interface
+- No ads or tracking
+- Minimal permissions (only camera flash)
+- Lightweight and fast

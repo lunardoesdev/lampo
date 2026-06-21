@@ -5,6 +5,8 @@ AuthorName: Lunatic
 SourceCode: https://github.com/lunardoesdev/lampo
 IssueTracker: https://github.com/lunardoesdev/lampo/issues
 
+AutoUpdateMode: Version
+UpdateCheckMode: Tags
 RepoType: git
 Repo: https://github.com/lunardoesdev/lampo.git
 
