@@ -1,5 +1,10 @@
+
 This is a sample android project that is very easy to build yourself.
 The only requirement is mise (mise.jdx.dev)
+
+## install using obtainium
+[Install using Obtainium](obtainium://app/https://github.com/lunardoesdev/lampo)
+
 
 when you have mise installed and ready, run:
 ```
