@@ -7,7 +7,10 @@ java = "26.0.1"
 ruby = "3.4"
 
 [env]
-_.path = {tools = true, path = ["${ANDROID_HOME}/platform-tools"]}
+_.path = {tools = true, path = [
+ "${ANDROID_HOME}/platform-tools",
+ "${ANDROID_HOME}/build-tools/35.0.0",
+]}
 
 [settings]
 env_shell_expand = true

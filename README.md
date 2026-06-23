@@ -3,7 +3,12 @@ The only requirement is mise (mise.jdx.dev)
 
 when you have mise installed and ready, run:
 ```
-mise run build
+mise run apk
+```
+
+signing process is manual (adjust paths):
+```
+apksigner sign --ks ~/kon/lunatic-release-key.jks --ks-key-alias lunatic-alias lampo-v1.1.apk
 ```
 
 that will install dependencies including java, gradle, android sdk and all
