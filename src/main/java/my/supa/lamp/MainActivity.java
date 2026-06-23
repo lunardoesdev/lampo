@@ -7,6 +7,7 @@ import android.hardware.camera2.CameraCharacteristics;
 import android.hardware.camera2.CameraManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowInsets;
 import android.view.WindowInsetsController;
@@ -27,10 +28,26 @@ public class MainActivity extends Activity {
         camera = getSystemService(CameraManager.class);
         cameraId = findFlash();
         flashlightImage = findViewById(R.id.flashlightImage);
-        flashlightImage.setOnClickListener(new View.OnClickListener() {
+        flashlightImage.setOnTouchListener(new View.OnTouchListener() {
+            private float startX;
+            private float startY;
+
             @Override
-            public void onClick(View v) {
-                toggle();
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        startX = event.getX();
+                        startY = event.getY();
+                        return true;
+                    case MotionEvent.ACTION_UP:
+                        float dx = event.getX() - startX;
+                        float dy = event.getY() - startY;
+                        if (Math.sqrt(dx * dx + dy * dy) < 20) {
+                            toggle();
+                        }
+                        return true;
+                }
+                return false;
             }
         });
     }
