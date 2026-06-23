@@ -1,1 +1,2 @@
-Initial release
+- New app icon
+- New on/off toggle images

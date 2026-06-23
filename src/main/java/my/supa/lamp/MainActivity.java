@@ -7,13 +7,14 @@ import android.hardware.camera2.CameraCharacteristics;
 import android.hardware.camera2.CameraManager;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 
 public class MainActivity extends Activity {
 
     private CameraManager camera;
     private String cameraId;
     private boolean flashlight;
-    private FlashlightView flashlightView;
+    private ImageView flashlightImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,8 +22,8 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         camera = getSystemService(CameraManager.class);
         cameraId = findFlash();
-        flashlightView = findViewById(R.id.flashlightView);
-        flashlightView.setOnClickListener(new View.OnClickListener() {
+        flashlightImage = findViewById(R.id.flashlightImage);
+        flashlightImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 toggle();
@@ -61,7 +62,7 @@ public class MainActivity extends Activity {
         }
         flashlight = !flashlight;
         torch(flashlight);
-        flashlightView.setOn(flashlight);
+        flashlightImage.setImageResource(flashlight ? R.drawable.flashlight_on : R.drawable.flashlight_off);
     }
 
     @Override
@@ -78,7 +79,7 @@ public class MainActivity extends Activity {
         if (flashlight) {
             torch(false);
             flashlight = false;
-            flashlightView.setOn(false);
+            flashlightImage.setImageResource(R.drawable.flashlight_off);
         }
     }
 }
