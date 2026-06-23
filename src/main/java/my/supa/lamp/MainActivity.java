@@ -22,8 +22,8 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        hideSystemBars();
         setContentView(R.layout.activity_main);
+        hideSystemBars();
         camera = getSystemService(CameraManager.class);
         cameraId = findFlash();
         flashlightImage = findViewById(R.id.flashlightImage);
@@ -43,6 +43,7 @@ public class MainActivity extends Activity {
         }
     }
 
+    @SuppressWarnings("deprecation")
     private void hideSystemBars() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             getWindow().setDecorFitsSystemWindows(false);
