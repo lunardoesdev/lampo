@@ -1,0 +1,50 @@
+default_platform(:android)
+
+platform :android do
+  desc "Print store metadata"
+  lane :metadata do
+    base = File.join("..", "fastlane", "metadata", "android", "en-US")
+    puts "--- Metadata (en-US) ---"
+    puts "Title: #{File.read(File.join(base, "title.txt")).strip}"
+    puts "Short description: #{File.read(File.join(base, "short_description.txt")).strip}"
+    puts "Full description:\n#{File.read(File.join(base, "full_description.txt")).strip}"
+    puts "Whats new: #{File.read(File.join(base, "whats_new.txt")).strip}"
+  end
+  desc "Build release APK"
+  lane :build_apk do
+    Dir.chdir("..") do
+      sh "gradle assembleRelease"
+      project = read_project_name
+      version = read_version_name
+      FileUtils.cp(
+        "build/outputs/apk/release/#{project}-release-unsigned.apk",
+        "lampo-v#{version}.apk"
+      )
+    end
+  end
+
+  desc "Build release AAB"
+  lane :build_aab do
+    Dir.chdir("..") do
+      sh "gradle bundleRelease"
+      project = read_project_name
+      version = read_version_name
+      FileUtils.cp(
+        "build/outputs/bundle/release/#{project}-release.aab",
+        "lampo-v#{version}.aab"
+      )
+    end
+  end
+end
+
+def read_version_name
+  content = File.read("build.gradle.kts")
+  match = content.match(/versionName\s*=\s*"(?<version>[^"]+)"/)
+  match[:version] || "unknown"
+end
+
+def read_project_name
+  content = File.read("settings.gradle.kts")
+  match = content.match(/rootProject\.name\s*=\s*"(?<name>[^"]+)"/)
+  match[:name] || "app"
+end

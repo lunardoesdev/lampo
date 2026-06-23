@@ -4,13 +4,14 @@ android-sdk = "1.0"
 "github:cesarferreira/byedroid" = "0.9.0"
 gradle = "9.6.0"
 java = "26.0.1"
+ruby = "3.4"
 
 [env]
 _.path = {tools = true, path = ["${ANDROID_HOME}/platform-tools"]}
 
 [settings]
 env_shell_expand = true
-
+ruby.compile = false
 
 [tasks.install-android-sdk]
 sources = ["android-sdk-packages.txt"]
@@ -35,16 +36,43 @@ sources = [
 run = "gradle assembleDebug"
 alias = "b"
 
-[tasks.build-release]
-depends = ["install-android-sdk"]
+[tasks.deps]
+run = "bundle install"
+alias = "d"
+
+[tasks.build-release-apk]
+depends = ["install-android-sdk", "deps"]
 sources = [
+'Gemfile',
+'Gemfile.lock',
+'fastlane/Fastfile',
 'build.gradle.kts',
 'gradle.properties',
 'src/**',
 'settings.gradle.kts',
 'android-sdk-packages.txt'
 ]
-run = "gradle assembleRelease"
-alias = "br"
+run = "bundle exec fastlane android build_apk"
+alias = "apk"
+
+[tasks.metadata]
+sources = ['fastlane/metadata/android/en-US/*']
+run = "fastlane android metadata"
+alias = "m"
+
+[tasks.build-release-aab]
+depends = ["install-android-sdk", "deps"]
+sources = [
+'Gemfile',
+'Gemfile.lock',
+'fastlane/Fastfile',
+'build.gradle.kts',
+'gradle.properties',
+'src/**',
+'settings.gradle.kts',
+'android-sdk-packages.txt'
+]
+run = "bundle exec fastlane android build_aab"
+alias = "aab"
 
 
