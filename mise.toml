@@ -4,7 +4,6 @@ android-sdk = "latest"
 "github:cesarferreira/byedroid" = "0.9.0"
 gradle = "9.6.0"
 java = "26.0.1"
-ruby = "3.4"
 
 [env]
 _.path = {tools = true, path = [
@@ -37,7 +36,7 @@ sources = [
 'android-sdk-packages.txt'
 ]
 run = "gradle assembleDebug"
-alias = "b"
+alias = "apk"
 
 [tasks.deps]
 run = "bundle install"
@@ -56,7 +55,7 @@ sources = [
 'android-sdk-packages.txt'
 ]
 run = "bundle exec fastlane android build_apk"
-alias = "apk"
+alias = "fastlane-apk"
 
 [tasks.metadata]
 sources = ['fastlane/metadata/android/en-US/*']
@@ -76,6 +75,6 @@ sources = [
 'android-sdk-packages.txt'
 ]
 run = "bundle exec fastlane android build_aab"
-alias = "aab"
+alias = "fastlane-aab"
 
 
