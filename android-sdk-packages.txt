@@ -1,5 +1,5 @@
 platform-tools
-build-tools;35.0.0
-platforms;android-35
-ndk;26.1.10909125
+build-tools;36.0.0
+platforms;android-36
+ndk;29.0.14206865
 cmake;3.22.1

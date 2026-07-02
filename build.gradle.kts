@@ -4,8 +4,9 @@ plugins {
 
 android {
     namespace = "my.supa.lamp"
-    compileSdk = 34
+    compileSdk = 36
     buildToolsVersion = "36.0.0"
+    ndkVersion = "29.0.14206865"
 
     dependenciesInfo {
         // Disables dependency metadata when building APKs (for IzzyOnDroid/F-Droid)
@@ -17,14 +18,14 @@ android {
     defaultConfig {
         applicationId = "my.supa.lamp"
         minSdk = 26
-        targetSdk = 34
+        targetSdk = 36
         versionCode = 2
         versionName = "1.1"
     }
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
         }
     }
 
